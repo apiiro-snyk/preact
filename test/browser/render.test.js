@@ -474,17 +474,17 @@ describe('render()', () => {
 
 	it('should support popover auto', () => {
 		render(<div popover="auto" />, scratch);
-		expect(scratch.innerHTML).to.equal("<div popover=\"auto\"></div>");
+		expect(scratch.innerHTML).to.equal('<div popover="auto"></div>');
 	});
 
 	it('should support popover true boolean', () => {
 		render(<div popover />, scratch);
-		expect(scratch.innerHTML).to.equal("<div popover=\"\"></div>");
+		expect(scratch.innerHTML).to.equal('<div popover=""></div>');
 	});
 
 	it('should support popover false boolean', () => {
 		render(<div popover={false} />, scratch);
-		expect(scratch.innerHTML).to.equal("<div></div>");
+		expect(scratch.innerHTML).to.equal('<div></div>');
 	});
 
 	// Test for preactjs/preact#4340
@@ -629,6 +629,17 @@ describe('render()', () => {
 		expect(links[1].hasAttribute('href')).to.equal(false);
 		expect(links[2].hasAttribute('href')).to.equal(false);
 		expect(links[3].hasAttribute('href')).to.equal(true);
+	});
+
+	it('should support using `prop:` directive to set properties', () => {
+		render(<input prop:foo="bar" />, scratch);
+		expect(scratch.firstChild.foo).to.equal('bar');
+		expect(scratch.firstChild.getAttribute('foo')).to.equal(null);
+	});
+
+	it('should support using `attr:` directive to set attributes', () => {
+		render(<input attr:value="foo" />, scratch);
+		expect(scratch.firstChild.getAttribute('value')).to.equal('foo');
 	});
 
 	describe('dangerouslySetInnerHTML', () => {
