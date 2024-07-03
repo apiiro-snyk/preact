@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@material-ui/core": "4.9.5",
-    "@reduxjs/toolkit": "^2.2.3",
+    "@reduxjs/toolkit": "^2.2.5",
     "d3-scale": "^1.0.7",
     "d3-selection": "^1.2.0",
     "htm": "2.1.1",
